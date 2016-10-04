@@ -1,11 +1,12 @@
 FROM mhart/alpine-node
 
-WORKDIR /app
+ENV APP /srv/alpine-node-server
+WORKDIR ${APP}
 
 EXPOSE 9000
 
-COPY . /app
-
+COPY package.json ${APP}
 RUN npm install
 
+COPY . ${APP}
 CMD npm start

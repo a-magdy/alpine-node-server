@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+
+  alpine-node-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - MYSQL=mysql://user@pass@example.com:3306/dbname
+    image: alpine-node-server
+    container_name: alpine-node-server
+    volumes:
+      - ./server.js:/srv/alpine-node-server/server.js
+    ports:
+      - "9000:9000"
